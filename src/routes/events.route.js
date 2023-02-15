@@ -42,6 +42,30 @@ router.post('/add', async (req, res) => {
     }
 })
 
+router.get("/getById/:id", async (req, res) => {
+    try {
+      var id = req.params.id;
+      // console.log(id)
+      res.json(await eventsService.findEventDetails(id));
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  });
+  
+  router.patch("/edit", async (req, res) => {
+    try {
+  
+      var id = req.body.id
+      var info = req.body.form;
+      var obj = JSON.parse(info);
+      console.log(info)
+      res.json(await eventsService.editEvents(id, obj));
+    } catch (err) {
+      res.json(err);
+    }
+  });
+
 module.exports = {
     router
 }

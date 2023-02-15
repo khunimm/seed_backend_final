@@ -144,6 +144,21 @@ async function countEventsSuccess(sid) {
   }
 }
 
+async function updateStatus(id, target) {
+  // console.log("dfsdfs")
+  var result = await regisEvents.update(
+    {
+      status_id: target,
+    },
+    {
+      where: {
+        re_id: id,
+      },
+    }
+  );
+  return result;
+}
+
 module.exports = {
   find,
   mobileFind,

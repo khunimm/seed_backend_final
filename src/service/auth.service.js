@@ -15,7 +15,7 @@ async function signIn(user) {
   //* user.username / password
   // console.log('1', user);
   var found = await db.user.findOne({
-    where: { username: user.username }
+    where: { email: user.email }
   });
   // console.log('2', found);
   if (found) {

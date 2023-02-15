@@ -52,6 +52,16 @@ router.post('/requestResponseEducation', async (req, res) => {
     }
 })
 
+router.patch("/update/isApproved", async (req, res) => {
+    try {
+      var id = req.body.re_id;
+      var target = req.body.target;
+      res.json(await responseEducationService.updateStatus(id, target));
+    } catch (err) {
+      res.json(err);
+    }
+  });
+
 
 module.exports = {
     router

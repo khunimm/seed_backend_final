@@ -3,6 +3,20 @@ const { responseEducation } = db;
 
 db.sequelize.sync();
 
+async function find() {
+    try {
+      var result = await responseEducation.findAll({
+        include: { model: seedMembers, require: true },
+      });
+  
+      var count = result.length;
+  
+      return { result: result, count: count };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 async function findAll() {
     try {
         // // console.log('query');
@@ -56,7 +70,26 @@ async function requestResponseEducation(body, files) {
         return { status: "error", data: err.message }
     }
 }
+
+async function updateStatus(id, target) {
+    // console.log("dfsdfs")
+    // // console.log("id: ", id," target: ", target);
+    var result = await responseEducation.update(
+      {
+        status_response: target,
+      },
+      {
+        where: {
+          re_id: id,
+        },
+      }
+    );
+    return result;
+  }
+
 module.exports = {
+    find,
     findAll,
     requestResponseEducation,
+    updateStatus
 }
