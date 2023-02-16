@@ -82,6 +82,9 @@ app.use('/responseEducation', responseEducationRoute.router);
 
 app.use('/rewardRank', rewardRankRoute.router);
 
+// app.use('/public',express.static('src/public'))
+// app.use('/public',serveIndex('src/public'))
+
 app.use('/public',express.static('src/public'))
 app.use('/public',serveIndex('src/public'))
 
