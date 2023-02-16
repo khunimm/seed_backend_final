@@ -109,7 +109,11 @@ async function editEvents(info) {
     var result = await events.update(
       {
         name: info.name,
-        zone: info.zone,
+        z_id: info.z_id,
+        el_id: info.el_id,
+        description: info.description,
+        member_limit: info.member_limit,
+        point: info.point,
       },
       {
         where: {
