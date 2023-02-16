@@ -167,4 +167,5 @@ module.exports = {
   cancelRegis,
   checkStatus,
   countEventsSuccess,
+  updateStatus
 };

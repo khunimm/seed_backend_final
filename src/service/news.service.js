@@ -56,12 +56,13 @@ async function addNews(path, News) {
     }
 }
 
-async function editNews(info) {
+async function editNews(path, info) {
     try {
       var result = await news.update(
         {
           name: info.name,
           description: info.description,
+          img: path
         },
         {
           where: {
