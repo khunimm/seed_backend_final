@@ -41,6 +41,17 @@ router.get('/mobile', async (req, res) => {
     }
 })
 
+router.patch("/edit", async (req, res) => {
+    try {
+  
+      var info = req.body.form;
+      var obj = JSON.parse(info);
+      res.json(await newsService.editNews(obj));
+    } catch (err) {
+      res.json(err);
+    }
+  });
+
 
 module.exports = {
     router

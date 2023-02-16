@@ -56,9 +56,40 @@ async function addNews(path, News) {
     }
 }
 
+async function editNews(info) {
+    try {
+      var result = await news.update(
+        {
+          name: info.name,
+          description: info.description,
+        },
+        {
+          where: {
+            n_id: info.n_id,
+          },
+        }
+      );
+  
+      return { status: "success", result: result };
+    } catch (error) {
+      return { status: "error", result: error.message };
+    }
+  }
+  
+  async function findNewsDetails(id) {
+    var result = await events.findOne({
+      where: {
+        e_id: id,
+      },
+    });
+    return result;
+  }
+
 module.exports = {
     find,
     mobileFind,
     addNews,
+    editNews,
+    findNewsDetails
     
     }

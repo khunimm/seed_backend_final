@@ -124,8 +124,8 @@ app.use((_req, res) => {
   res.sendStatus(501);
 });
 
-app.listen(3001, () =>{
-  console.log("sever run on port " + 3001);
+app.listen(3000, () =>{
+  console.log("sever run on port " + 3000);
 });
 
 

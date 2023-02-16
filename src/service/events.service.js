@@ -104,9 +104,39 @@ async function addEvents(path, info) {
 
 }
 
+async function editEvents(info) {
+  try {
+    var result = await events.update(
+      {
+        name: info.name,
+        zone: info.zone,
+      },
+      {
+        where: {
+          e_id: info.e_id,
+        },
+      }
+    );
+
+    return { status: "success", result: result };
+  } catch (error) {
+    return { status: "error", result: error.message };
+  }
+}
+
+async function findEventDetails(id) {
+  var result = await events.findOne({
+    where: {
+      e_id: id,
+    },
+  });
+  return result;
+}
+
 module.exports = {
     find,
     mobileFind,
-    addEvents
-
+    addEvents,
+    editEvents,
+    findEventDetails
 }

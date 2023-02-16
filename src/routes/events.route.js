@@ -56,11 +56,9 @@ router.get("/getById/:id", async (req, res) => {
   router.patch("/edit", async (req, res) => {
     try {
   
-      var id = req.body.id
       var info = req.body.form;
       var obj = JSON.parse(info);
-      console.log(info)
-      res.json(await eventsService.editEvents(id, obj));
+      res.json(await eventsService.editEvents(obj));
     } catch (err) {
       res.json(err);
     }
