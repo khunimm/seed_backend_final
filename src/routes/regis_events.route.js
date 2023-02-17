@@ -83,10 +83,21 @@ router.patch("/update/isApproved", async (req, res) => {
   }
 });
 
+router.patch("/update/point", async (req, res) => {
+  try {
+    var re_id = req.body.re_id;
+    var target = req.body.target;
+    var s_id = req.body.s_id;
+    var point = req.body.point;
+    res.json(await regisEventsService.updatePoint(re_id, target, s_id, point));
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 router.get("/findPendingMembers/:approved_status", async (req, res) => {
   try {
     var status_id = req.params.approved_status
-    console.log('status_id: ' ,status_id)
     res.json(await regisEventsService.findPendingMembers(status_id));
   } catch (err) {
     res.json(err);
@@ -96,7 +107,6 @@ router.get("/findPendingMembers/:approved_status", async (req, res) => {
 router.get("/findApprovedMembers/:approved_status", async (req, res) => {
   try {
     var status_id = req.params.approved_status
-    console.log('status_id: ' ,status_id)
     res.json(await regisEventsService.findPendingMembers(status_id));
   } catch (err) {
     res.json(err);

@@ -161,6 +161,30 @@ async function updateStatus(id, target) {
   return result;
 }
 
+async function updatePoint(re_id, target, s_id, point) {
+  var result = await regisEvents.update(
+    {
+      status_id: target,
+    },
+    {
+      where: {
+        re_id: re_id,
+      },
+    }
+  );
+  var result_2 = await seedMembers.increment(
+    {
+      score_rank: + point,
+    },
+    {
+      where: {
+        s_id: s_id,
+      },
+    }
+  );
+  return result, result_2;
+}
+
 async function findPendingMembers(status_id) {
   try {
     var result = await regisEvents.findAll({
@@ -197,7 +221,6 @@ async function findApprovedMembers(status_id) {
   }
 }
 
-
 module.exports = {
   find,
   mobileFind,
@@ -207,6 +230,7 @@ module.exports = {
   checkStatus,
   countEventsSuccess,
   updateStatus,
+  updatePoint,
   findPendingMembers,
-  findApprovedMembers
+  findApprovedMembers,
 };
