@@ -6,9 +6,11 @@ db.sequelize.sync();
 async function find() {
   try {
     var result = await regisEvents.findAll({
-      include: [{ model: regisStatus , require:true },
-                { model: events, require:true},
-                { model: seedMembers, require:true}],
+      include: [
+        { model: regisStatus, require: true },
+        { model: events, require: true },
+        { model: seedMembers, require: true },
+      ],
     });
 
     var count = result.length;
@@ -159,6 +161,43 @@ async function updateStatus(id, target) {
   return result;
 }
 
+async function findPendingMembers(status_id) {
+  try {
+    var result = await regisEvents.findAll({
+      include: [
+        { model: regisStatus, require: true },
+        { model: events, require: true },
+        { model: seedMembers, require: true },
+      ],
+      where: {
+        status_id: status_id,
+      },
+    });
+    return { status: "success", result: result };
+  } catch (error) {
+    return { status: "error", result: error.message };
+  }
+}
+
+async function findApprovedMembers(status_id) {
+  try {
+    var result = await regisEvents.findAll({
+      include: [
+        { model: regisStatus, require: true },
+        { model: events, require: true },
+        { model: seedMembers, require: true },
+      ],
+      where: {
+        status_id: status_id,
+      },
+    });
+    return { status: "success", result: result };
+  } catch (error) {
+    return { status: "error", result: error.message };
+  }
+}
+
+
 module.exports = {
   find,
   mobileFind,
@@ -167,5 +206,7 @@ module.exports = {
   cancelRegis,
   checkStatus,
   countEventsSuccess,
-  updateStatus
+  updateStatus,
+  findPendingMembers,
+  findApprovedMembers
 };

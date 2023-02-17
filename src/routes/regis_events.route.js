@@ -83,6 +83,26 @@ router.patch("/update/isApproved", async (req, res) => {
   }
 });
 
+router.get("/findPendingMembers/:approved_status", async (req, res) => {
+  try {
+    var status_id = req.params.approved_status
+    console.log('status_id: ' ,status_id)
+    res.json(await regisEventsService.findPendingMembers(status_id));
+  } catch (err) {
+    res.json(err);
+  }
+})
+
+router.get("/findApprovedMembers/:approved_status", async (req, res) => {
+  try {
+    var status_id = req.params.approved_status
+    console.log('status_id: ' ,status_id)
+    res.json(await regisEventsService.findPendingMembers(status_id));
+  } catch (err) {
+    res.json(err);
+  }
+})
+
 module.exports = {
   router,
 };
