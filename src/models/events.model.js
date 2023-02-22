@@ -12,7 +12,7 @@ module.exports = ( sequelize, Sequelize ) => {
             member_amount: { type: Sequelize.INTEGER(), allowNull: true, field: 'member_amount' },
             start_date: { type: Sequelize.DATE(), allowNull: true, field: 'start_date' },
             end_date: { type: Sequelize.DATE(), allowNull: true, field: 'end_date' },
-            description: { type: Sequelize.STRING(), allowNull: true, field: 'description' },
+            description: { type: Sequelize.TEXT, allowNull: true, field: 'description' },
             img: { type: Sequelize.STRING(), allowNull: true, field: 'img' },
             point: { type: Sequelize.INTEGER(), allowNull: true, field: 'point' },
         },

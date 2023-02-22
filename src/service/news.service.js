@@ -78,9 +78,9 @@ async function editNews(path, info) {
   }
   
   async function findNewsDetails(id) {
-    var result = await events.findOne({
+    var result = await news.findOne({
       where: {
-        e_id: id,
+        n_id: id,
       },
     });
     return result;

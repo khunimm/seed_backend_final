@@ -107,7 +107,7 @@ router.get("/findPendingMembers/:approved_status", async (req, res) => {
 router.get("/findApprovedMembers/:approved_status", async (req, res) => {
   try {
     var status_id = req.params.approved_status
-    res.json(await regisEventsService.findPendingMembers(status_id));
+    res.json(await regisEventsService.findApprovedMembers(status_id));
   } catch (err) {
     res.json(err);
   }

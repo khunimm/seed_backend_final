@@ -41,6 +41,16 @@ router.get("/mobile", async (req, res) => {
   }
 });
 
+router.get("/getById/:id", async (req, res) => {
+  try {
+    var id = req.params.id;
+    res.json(await newsService.findNewsDetails(id));
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
+
 router.patch("/edit", async (req, res) => {
   try {
     var date = new Date().toISOString();

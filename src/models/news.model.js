@@ -5,7 +5,7 @@ module.exports = ( sequelize, Sequelize ) => {
             n_id: { type: Sequelize.INTEGER(), primaryKey: true, autoIncrement: true, field: 'n_id'},
             name: { type: Sequelize.STRING(), allowNull: true, field: 'name' },
             img: { type: Sequelize.STRING(), allowNull: true, field: 'img' },
-            description: { type: Sequelize.STRING(), allowNull: true, field: 'description' },
+            description: { type: Sequelize.TEXT, allowNull: true, field: 'description' },
             created_at: { type: Sequelize.DATE(), field: 'created_at' },
             updated_at: { type: Sequelize.DATE(), field: 'updated_at' }
         },
