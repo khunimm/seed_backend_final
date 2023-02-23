@@ -41,15 +41,14 @@ async function mobileFind(query) {
 }
 
 async function addNews(path, News) {
-    console.log("🚀 ~ file: news.service.js:44 ~ addNews ~ path", path)
-    console.log("🚀 ~ file: news.service.js:44 ~ addNews ~ News", News)
+
     try {
         var create_var = await news.create({
             name: News.name,
             img: path,
             description: News.description,
         })
-        console.log("🚀 ~ file: news.service.js:52 ~ addNews ~ create_var", create_var)
+
         return { result: create_var }
     } catch (error) {
         console.log(error)
@@ -70,7 +69,6 @@ async function editNews(path, info) {
           },
         }
       );
-  
       return { status: "success", result: result };
     } catch (error) {
       return { status: "error", result: error.message };

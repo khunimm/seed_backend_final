@@ -1,5 +1,5 @@
 const db = require('../config/sqlconfig');
-const { responseEducation } = db;
+const { responseEducation, seedMembers } = db;
 
 db.sequelize.sync();
 

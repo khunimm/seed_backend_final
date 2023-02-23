@@ -35,9 +35,11 @@ const sequelize = new Sequelize(
   db.medias = require("./../models/medias.model")( sequelize, Sequelize );
   db.news = require('./../models/news.model')( sequelize, Sequelize );
   db.points = require('./../models/points.model')( sequelize, Sequelize );
+  db.provinceOptions = require('./../models/provinceOptions.model')( sequelize, Sequelize );
   db.ranks = require('./../models/ranks.model')( sequelize, Sequelize );
   db.regisEvents = require('./../models/regisEvents.model')( sequelize, Sequelize );
   db.regisStatus = require('./../models/regisStatus.model')( sequelize, Sequelize );
+  db.registerCamp = require('./../models/registerCamp')( sequelize, Sequelize );
   db.seedMembers = require('./../models/seedMembers')(sequelize ,Sequelize );
   db.user = require('./../models/users.model')( sequelize, Sequelize );
   db.zones = require('./../models/zones.model')( sequelize, Sequelize );
@@ -90,6 +92,15 @@ const sequelize = new Sequelize(
 
   db.seedMembers.hasMany(db.regisEvents, {foreignKey: "s_id"})
   db.regisEvents.belongsTo(db.seedMembers, {foreignKey: "s_id", targetKey: "s_id"});
+
+  db.seedMembers.hasMany(db.responseEducation, {foreignKey: "s_id"})
+  db.responseEducation.belongsTo(db.seedMembers, {foreignKey: "s_id", targetKey: "s_id"})
+
+  db.regisStatus.hasMany(db.registerCamp, { foreignKey: "status_id"})
+  db.registerCamp.belongsTo(db.regisStatus, { foreignKey: "status_id", targetKey: "status_id"})
+
+  db.events.hasMany(db.registerCamp, {foreignKey: "e_id"})
+  db.registerCamp.belongsTo(db.events, { foreignKey: "e_id", targetKey: "e_id"})
 
 
   

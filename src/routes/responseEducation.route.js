@@ -5,10 +5,17 @@ const path = require('path');
 
 const responseEducationService = require('../service/responseEducation.service')
 
+router.get("/", async (req, res) => {
+    try {
+      res.json(await responseEducationService.find());
+    } catch (error) {
+      res.json(error);
+    }
+  });
+
 router.get('/findAll', async (req, res) => {
     try {
         console.log('test');
-        // console.log('news route');
         res.json(await responseEducationService.findAll(req.query));
     } catch (error) {
         res.json(error);

@@ -37,8 +37,10 @@ const authRouter = require('./src/routes/auth.route')
 const fileupload = require("express-fileupload")
 const eventsRoute = require("./src/routes/events.route")
 const regisEventsRoute = require("./src/routes/regis_events.route")
+const registerCampRoute = require("./src/routes/registerCamp.route")
 const responseEducationRoute = require("./src/routes/responseEducation.route")
 const rewardRankRoute = require("./src/routes/rewardRank.route")
+const provinceOptionsRoute = require("./src/routes/provinceOptions.route")
 
 
 
@@ -78,9 +80,13 @@ app.use('/events', eventsRoute.router);
 
 app.use('/regisEvents', regisEventsRoute.router);
 
+app.use('/registerCamp', registerCampRoute.router);
+
 app.use('/responseEducation', responseEducationRoute.router);
 
 app.use('/rewardRank', rewardRankRoute.router);
+
+app.use('/provinceOptions', provinceOptionsRoute.router);
 
 // app.use('/public',express.static('src/public'))
 // app.use('/public',serveIndex('src/public'))
